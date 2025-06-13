@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    @for(feature of features; track feature.title) {
+    <div class="col-sm-6 col-lg-4">
+      <mat-card class="cardWithShadow">
+        <mat-card-content>
+          <span class="icon-50 bg-light-{{feature.color}} rounded d-flex align-items-center justify-content-center">
+            <i-tabler [name]="feature.icon" class="text-{{ feature.color }} icon-30"></i-tabler>
+          </span>
+          <h6 class="m-0 f-s-18 f-w-600 m-b-8 m-t-24">
+            {{ feature.title }}
+          </h6>
+          <span class="f-s-14 m-b-24 d-block lh-base">{{
+            feature.subtext
+            }} @if(feature.subtextMore){
+            <br>
+            {{feature.subtextMore}}
+            }</span>
+        </mat-card-content>
+      </mat-card><br>
+    </div>
+    }
+  </div>
+</div>

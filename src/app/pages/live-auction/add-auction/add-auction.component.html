@@ -1,0 +1,67 @@
+<h2 mat-dialog-title><strong>{{ data ? 'Edit Auction' : 'Add Auction' }}</strong></h2>
+<form [formGroup]="auctionForm">
+  <div mat-dialog-content class="content">
+    <!-- Product ID -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Products</mat-label>
+      <mat-select formControlName="product_id" placeholder="Select Product">
+     
+        <mat-option *ngFor="let product of products" [value]="product.id">
+          {{ product.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="auctionForm.get('product_id')?.hasError('required')">
+        Product is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Start Time -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Start Time</mat-label>
+      <input matInput formControlName="start_time" [matDatepicker]="picker1" placeholder="Select Start Time" />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="auctionForm.get('start_time')?.hasError('required')">
+        Start Time is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- End Time -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>End Time</mat-label>
+      <input matInput formControlName="end_time" [matDatepicker]="picker2" placeholder="Select End Time" />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      <mat-error *ngIf="auctionForm.get('end_time')?.hasError('required')">
+        End Time is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Starting Price -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Starting Price</mat-label>
+      <input matInput formControlName="starting_price" type="number" placeholder="Enter Starting Price" />
+      <mat-error *ngIf="auctionForm.get('starting_price')?.hasError('required')">
+        Starting Price is required
+      </mat-error>
+      <mat-error *ngIf="auctionForm.get('starting_price')?.hasError('pattern')">
+        Starting Price must be a valid number
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Status -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Actions -->
+    <div class="float-right">
+      <button mat-flat-button color="primary" [disabled]="!auctionForm.valid" (click)="submit()">Save</button>
+      <button mat-stroked-button color="warn" class="m-l-8" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</form>

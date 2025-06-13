@@ -1,0 +1,134 @@
+<!-- <mat-card>
+    <mat-card-title>Login</mat-card-title>
+<mat-card-content >
+  <div class="button">
+    <button type="button" mat-raised-button  ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 256 256"><path fill="#F1511B" d="M121.666 121.666H0V0h121.666z"/><path fill="#80CC28" d="M256 121.666H134.335V0H256z"/><path fill="#00ADEF" d="M121.663 256.002H0V134.336h121.663z"/><path fill="#FBBC09" d="M256 256.002H134.335V134.336H256z"/></svg> &nbsp;Sign in with Microsoft</button>
+  </div>
+  <div class="button">
+  <asl-google-signin-button type="standard" mat-raised-button size='large' shape= 'rectangular' > Google</asl-google-signin-button> 
+  <div mat-raised-button id="g_id_onload"
+     data-client_id="315946739303-q1reqn0h97dnfm0tt70sd79ivu2umgta.apps.googleusercontent.com" 
+     data-context="signin"
+     data-ux_mode="popup"
+     data-itp_support="true"
+     data-callback="handleOauthResponse"
+     >
+</div>
+
+<div  mat-raised-button class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+<button mat-raised-button (click)="googleSignin($event)">Login with google</button>
+  </div>
+</mat-card-content>
+</mat-card> -->
+
+<div class="blank-layout-container justify-content-center">
+  <div class="auth-wrapper">
+    <div class="position-relative shaper-wrapper">
+      <div class="w-100 position-relative rounded bg-white auth-card">
+        <div class="auth-body">
+          <!-- @if(options.theme === 'light') {
+          <div class="m-t-20 d-flex">
+            <a href="https://3u.gg">
+              <img src="./assets/images/logos/dark-logo1.svg" style="width:140px" class="align-middle m-2" alt="logo" />
+            </a>
+          </div>
+
+          } @if(options.theme === 'dark') {
+          <a [routerLink]="['/dashboards/dashboard1']" class="m-t-20 d-flex">
+            <img src="./assets/images/logos/light-logo.svg" class="align-middle m-2" alt="logo" />
+          </a>
+          } -->
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="align-items-center justify-content-center d-none d-lg-flex">
+                <img class="m-t-20" src="/assets/images/backgrounds/login3-bg.png" alt="login" style="width: 500px" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="d-flex align-items-start align-items-lg-center justify-content-center">
+                <div class="row justify-content-center w-100">
+                  <div class="col-lg-11">
+                    <h4 class="f-w-700 f-s-30 m-0 m-t-20 lh-base">
+                      Welcome to KisanXpert
+                    </h4>
+
+                    <form class="m-t-30" [formGroup]="form" (ngSubmit)="submit()">
+                      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Username</mat-label>
+                      <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input matInput formControlName="uname" />
+                        @if(f['uname'].touched && f['uname'].invalid) {
+                        <mat-hint class="m-b-16 error-msg">
+                          @if(f['uname'].errors &&
+                          f['uname'].errors['required']) {
+                          <div class="text-error">Name is required.</div>
+                          } @if(f['uname'].errors &&
+                          f['uname'].errors['minlength']) {
+                          <div class="text-error">
+                            Name should be 6 character.
+                          </div>
+                          }
+                        </mat-hint>
+                        }
+                      </mat-form-field>
+
+                      <!-- password -->
+                      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+                      <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input matInput type="password" formControlName="password" />
+                        @if(f['password'].touched && f['password'].invalid) {
+                        <mat-hint class="m-b-16 error-msg">
+                          @if(f['password'].errors &&
+                          f['password'].errors['required']) {
+                          <div class="text-error">Password is required.</div>
+                          }
+                        </mat-hint>
+                        }
+                      </mat-form-field>
+
+                      <div class="d-block d-lg-flex align-items-center m-b-12">
+                        <mat-checkbox color="primary">Remember this Device</mat-checkbox>
+                      </div>
+                      <button mat-flat-button color="primary" class="w-100" [disabled]="!form.valid">
+                        Sign In
+                      </button>
+                      <!-- input -->
+                    </form>
+                    <span class="d-block f-w-500 d-block m-t-24">New to Portal?
+                      <a [routerLink]="['/auth/register']" class="text-decoration-none text-primary f-w-500 f-s-14">
+                        Create an account</a>
+                    </span>
+                  </div>
+                </div>
+                <!-- <div class="row justify-content-center w-100">
+                  <div class="col-lg-11">
+                    <h4 class="f-w-700 f-s-30 m-0 m-t-20 lh-base">
+                    </h4>
+
+                    <div class="row m-t-40">
+                      <div class="col-12 col-sm-12 signinBtn m-t-40">
+                        <div style="max-width: 195px;">
+                          <asl-google-signin-button mat-raised-button type="standard" size='large' shape='pill'
+                            logo_alignment='left'>
+                            Google
+                          </asl-google-signin-button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

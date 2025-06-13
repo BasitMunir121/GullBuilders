@@ -1,0 +1,81 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title><strong *ngIf="!isOpenedOrgURLModal">Add a New Direct Link</strong><strong *ngIf="isOpenedOrgURLModal">Add a New Organization Link</strong><app-crossbutton></app-crossbutton></h2>
+
+<mat-dialog-content class="cardWithShadow theme-card m-b-0" style="border-radius: 0px;padding: 0px 0px!important">
+    <mat-stepper #stepper>
+        <mat-step [stepControl]="urlForm">
+            <ng-template matStepLabel><span class="hideMobile">New Link</span></ng-template>
+            <div>
+                <form [formGroup]="urlForm" (ngSubmit)="onSubmit()">
+                    <!-- <input formControlName="OrganizationID"> -->
+                    <!-- <input formControlName="PlanId" [hidden]="true"> -->
+                    <mat-form-field appearance="outline" class="m-b-10 m-t-10">
+                        <mat-label class="firstLabel">Direct Link </mat-label>
+                        <input matInput type="text" cdkFocusInitial formControlName="URLPath" #urlInput (click)="falseAvailability()">
+                        <!-- <span matTextPrefix>3u.gg/{{orgNameForUrl}}/</span> -->
+                       
+                        <span matTextPrefix *ngIf="isBranded && isOpenedOrgURLModal">{{ orgNameForUrl }}.3u.gg/</span>
+                        <span matTextPrefix *ngIf="!isBranded && isOpenedOrgURLModal">3u.gg/{{ orgNameForUrl }}/</span>
+                        <span matTextPrefix *ngIf="!isOpenedOrgURLModal">3u.gg/</span>
+                        <mat-hint *ngIf="!isOpenedOrgURLModal" class="black">Direct link must contain at least 4 characters. Valid characters are
+                            alphabet and numbers. </mat-hint>
+                        <mat-hint *ngIf="isOpenedOrgURLModal" class="black">Organization link must contain at least 1 character. Valid characters are
+                                alphabet and numbers. </mat-hint>
+                        <!-- <mat-hint class="black">Direct Link must contains at least 4 characters. Valid characters are
+                            alphabet, numbers, hyphen(&hyphen;) and tilde(&tilde;). </mat-hint> -->
+                        <!-- <mat-error *ngIf="controlHasError('required', 'URLPath')">Please enter a direct
+                                    link.</mat-error> -->
+                        <span class="m-r-10" mat-icon-button matSuffix>
+                            <mat-icon class="op-5 green" *ngIf="isAvailable">check</mat-icon>
+                            <mat-icon class="op-5 red" *ngIf="isAvailable==false">clear</mat-icon>
+                        </span>
+                    </mat-form-field>
+                    <div class="float-right m-t-mobile-50">
+                        <button mat-flat-button *ngIf="!isAvailable" color="primary" [disabled]="!urlForm.valid"
+                            (click)="checkAvailability(urlInput.value)" type="button">
+                            Check Availability
+                        </button>
+                        <button mat-flat-button *ngIf="isAvailable" color="primary"
+                            [disabled]="!urlForm.valid || !isAvailable" type="submit">
+                            Grab it and Next
+                        </button>
+                       
+
+                        <button mat-stroked-button color="warn" class="m-l-8" [mat-dialog-close]="false">
+                            Cancel
+                        </button><br>
+                        <!-- <mat-hint *ngIf="urlInput.value.length === 4 && isAvailable">Grab it now and pay within the next 24 hours.</mat-hint>
+                        <mat-hint *ngIf="urlInput.value.length > 4 && isAvailable">Grad it now and pay within the next 14 days.</mat-hint> -->
+                        @if(!isOpenedOrgURLModal){
+                            <mat-hint *ngIf="isAvailable" class="green">
+                                {{ urlInput.value.length === 4 ? 'Grab it now and pay within the next 24 hours.' : 'Grab it now and pay within the next 7 days.' }}
+                            </mat-hint>
+                        }
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="targetUrlForm">
+            <ng-template matStepLabel><span class="hideMobile">Target URL</span></ng-template>
+            <div>
+                <form [formGroup]="targetUrlForm" (ngSubmit)="onSubmitUpdate()">
+                    <input formControlName="URLForwarderID" [hidden]="true">
+                    <mat-form-field appearance="outline" class="m-b-10 m-t-10">
+                        <mat-label>Target URL</mat-label>
+                        <input matInput formControlName="TargetURL" width="80%">
+                        <!-- <mat-error *ngIf="controlHasError('required', 'TargetURL')">Please enter a valid
+                                    URL.</mat-error> -->
+                    </mat-form-field>
+                    <div class="float-right">
+                        <button mat-flat-button color="primary" [disabled]="!targetUrlForm.valid" type="submit">Save and
+                            Next</button>
+                        <button mat-stroked-button color="warn" class="m-l-8" type="button"
+                            (click)="thirdStep()">Skip</button>
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step>
+    
+        </mat-step>
+    </mat-stepper>
+</mat-dialog-content>

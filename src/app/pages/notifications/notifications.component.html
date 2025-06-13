@@ -1,0 +1,71 @@
+<mat-card>
+  @if(userDetails.IsGovtAgency){
+    <mat-card-header>
+      <div class="header-container">
+        <!-- <h2 class="card-title">Notifications</h2> -->
+        <button mat-raised-button color="primary" (click)="AddNotification()" >Add Notification</button>
+      </div>
+    </mat-card-header>
+  }
+  
+    <mat-card-content>
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">ID</th>
+              <td mat-cell *matCellDef="let row" class="f-s-14">{{ row.id }}</td>
+            </ng-container>
+      
+            <!-- Advisory ID Column -->
+            <ng-container matColumnDef="advisory_id">
+              <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Advisory ID</th>
+              <td mat-cell *matCellDef="let row" class="f-s-14">{{ row.advisory_id }}</td>
+            </ng-container>
+      
+            <!-- Title Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Title</th>
+              <td mat-cell *matCellDef="let row" class="f-s-14">{{ row.title }}</td>
+            </ng-container>
+      
+            <!-- Content Column -->
+            <ng-container matColumnDef="content">
+              <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Content</th>
+              <td mat-cell *matCellDef="let row" class="f-s-14">{{ row.content }}</td>
+            </ng-container>
+      
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Action</th>
+              <td mat-cell *matCellDef="let row" class="action-link">
+                <a class="m-r-10 cursor-pointer" (click)="EditNotification(row)" matTooltip="Edit" matTooltipPosition="above">
+                  <i-tabler name="edit" class="icon-18"></i-tabler>
+                </a>
+                <a class="m-r-10 cursor-pointer" (click)="DeleteNotification(row)"  matTooltip="Delete" matTooltipPosition="above">
+                  <i-tabler name="trash" class="icon-18"></i-tabler>
+                </a>
+              </td>
+            </ng-container>
+      
+            <!-- Header and Row Definitions -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+            <!-- Loading Spinner -->
+            <div class="spinner-container" *ngIf="loading">
+              <mat-spinner></mat-spinner>
+            </div>
+      
+            <!-- No Data Message -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="5">No data available.</td>
+            </tr>
+          </table>
+      
+          <!-- Paginator -->
+          <mat-paginator [length]="totalRecords" [pageSize]="10" [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+        </div>
+      </mat-card-content>
+      
+</mat-card>

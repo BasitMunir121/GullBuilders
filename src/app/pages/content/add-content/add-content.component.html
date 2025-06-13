@@ -1,0 +1,40 @@
+<h2 mat-dialog-title class="f-w-500 m-b-24">
+    <strong>{{ data ? 'Edit Educational Content' : 'Add Educational Content' }}</strong>
+  </h2>
+  
+  <form [formGroup]="contentForm">
+    <div mat-dialog-content class="content">
+      
+      <!-- Title Input -->
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Enter title" />
+        <mat-error *ngIf="contentForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+        <mat-error *ngIf="contentForm.get('title')?.hasError('maxLength')">
+          Title cannot exceed 255 characters
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Content Input -->
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Content</mat-label>
+        <textarea matInput formControlName="content" rows="5" placeholder="Enter content"></textarea>
+        <mat-error *ngIf="contentForm.get('content')?.hasError('required')">
+          Content is required
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Save and Cancel Buttons -->
+      <div class="float-right">
+        <button mat-flat-button color="primary" [disabled]="!contentForm.valid" (click)="submit()">
+          Save
+        </button>
+        <button mat-stroked-button color="warn" class="m-l-8" (click)="close()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+  

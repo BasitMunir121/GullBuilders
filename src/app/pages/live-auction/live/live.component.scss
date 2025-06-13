@@ -1,0 +1,55 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+  }
+  
+  mat-list {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .chat-input {
+    display: flex;
+    gap: 10px;
+  
+    .full-width {
+      flex: 1;
+    }
+  }
+  
+  
+  mat-list-item {
+    display: flex;
+    justify-content: flex-start; /* Default to left */
+  
+    .mat-line {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      max-width: 80%;
+    }
+  }
+  
+  .chat-right {
+    justify-content: flex-end; /* Align to right for "You" messages */
+    .mat-line {
+      background-color: #4caf50;
+      color: white;
+      text-align: right;
+    }
+    text-align-last: right;
+
+  }
+  
+  .chat-left {
+    justify-content: flex-start; /* Align to left for others' messages */
+    .mat-line {
+      background-color: #e0e0e0;
+      text-align: left;
+    }
+  }

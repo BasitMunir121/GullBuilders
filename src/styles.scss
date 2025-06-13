@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.float-right{
+    float: right;
+}
+
+
+.mat-mdc-snack-bar-container {
+    &.success-snackbar {
+        --mdc-snackbar-supporting-text-size: 13px;
+      --mdc-snackbar-container-color: #14A562 !important;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+      --mat-snack-bar-button-color:#fff;
+    }
+}
+
+.mat-mdc-snack-bar-container {
+    &.danger-snackbar {
+        --mdc-snackbar-supporting-text-size: 13px;
+      --mdc-snackbar-container-color: #BF0144 !important;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+      --mat-snack-bar-button-color:#fff;
+    }
+}
+
+
+.mat-mdc-snack-bar-container{
+    margin-right: 20px !important;
+}
+.mat-mdc-dialog-content{
+    max-height: 75vh!important;
+}
+.mat-mdc-dialog-surface{
+    padding: 30px;
+}

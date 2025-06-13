@@ -1,0 +1,54 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title><strong>Share your Link</strong><app-crossbutton></app-crossbutton></h2>
+
+<form>
+  <div mat-dialog-content class="content">
+    @if(data && data.URLPath){
+        <div class="col-sm-12 d-flex align-items-center">
+            <mat-label class="mat-subtitle-2 f-w-600 d-block m-b-16">Direct Link: </mat-label>
+            @if(isBranded){
+                <span class="m-b-16 m-l-5">&nbsp;&nbsp;{{organizationSubDomain}}.3u.gg/{{ data.URLPath }}</span>
+            }@else {
+                <span class="m-b-16 m-l-5">&nbsp;&nbsp;3u.gg/{{ data.URLPath }}</span>
+            }
+        </div>
+        }
+        <div class="socialMedia d-flex align-items-center">
+            <button mat-icon-button (click)="shareOnWhatsApp()" matTooltip="WhatsApp" matTooltipPosition="above" tabindex="-1">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg>
+            </button>
+            <button mat-icon-button (click)="shareOnFacebook()" matTooltip="Facebook" matTooltipPosition="above" tabindex="-1">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
+            </button>
+            <button mat-icon-button (click)="shareOnLinkedIn()" matTooltip="LinkedIn" matTooltipPosition="above" tabindex="-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.473 0 16 .513 16 1.146v13.708c0 .633-.527 1.146-1.175 1.146H1.175C.527 16 0 15.487 0 14.854V1.146zM4.943 12.307V6.169H2.905v6.138h2.038zm-.946-7.23c.682 0 1.106-.452 1.106-1.02-.012-.577-.424-1.02-1.092-1.02-.668 0-1.106.443-1.106 1.02 0 .568.424 1.02 1.068 1.02h.024zm4.734 7.23h2.037v-3.393c0-.182.013-.364.067-.495.146-.364.48-.742 1.04-.742.733 0 1.026.56 1.026 1.38v3.25h2.037v-3.737c0-2.002-1.065-2.933-2.486-2.933-1.15 0-1.667.645-1.954 1.1v.047h.013c-.006-.01-.01-.023-.016-.034h-.014v-1.058H8.73c.026.693 0 7.452 0 7.452z"/></svg>
+            </button>
+            <button mat-icon-button (click)="shareOnTwitter()" matTooltip="Twitter" matTooltipPosition="above" tabindex="-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16"><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.423A6.68 6.68 0 0016 3.542a6.658 6.658 0 01-1.889.518 3.3 3.3 0 001.447-1.817 6.573 6.573 0 01-2.084.793 3.301 3.301 0 00-5.62 3.006A9.355 9.355 0 011.112 2.1a3.284 3.284 0 001.018 4.389A3.273 3.273 0 01.64 6.575v.041a3.3 3.3 0 002.647 3.232 3.203 3.203 0 01-.865.116 3.23 3.23 0 01-.615-.058 3.301 3.301 0 003.066 2.277A6.6 6.6 0 010 13.026a9.344 9.344 0 005.026 1.472"/></svg>
+            </button>
+            <button mat-icon-button (click)="shareViaEmail()" matTooltip="Email" matTooltipPosition="above" tabindex="-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16"><path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm14-.5a1.5 1.5 0 00-.877.274L8 7.383 2.877 3.774A1.5 1.5 0 002 4.5V12a.5.5 0 00.5.5h11a.5.5 0 00.5-.5V4.5a1.5 1.5 0 00-.5-1.178z"/></svg>
+            </button>
+        </div>
+        <mat-form-field appearance="outline" class="w-100 m-t-10">
+            @if(isBranded){
+                <input matInput readonly value="https://{{organizationSubDomain}}.3u.gg/{{ data.URLPath }}" tabindex="-1">
+            }@else {
+                <input matInput readonly value="3u.gg/{{ data.URLPath }}" tabindex="-1">
+            }
+          
+            <span class="m-r-10" mat-icon-button matSuffix>
+                @if(isBranded){
+                    <div class="bg-light-accent p-10 p-y-15 rounded m-r-10 cursorPointer" (click)="copyUrl('https://'+organizationSubDomain+'.3u.gg/' + data.URLPath)"> Copy </div>
+                }
+                @else {
+                    <div class="bg-light-accent p-10 p-y-15 rounded m-r-10 cursorPointer" (click)="copyUrl('https://3u.gg/' + data.URLPath)"> Copy </div>
+                }
+                <!-- <mat-icon class="op-5 red" >clear</mat-icon> -->
+            </span>
+        </mat-form-field>
+    <!-- <div class="float-right">
+        <a mat-flat-button color="primary" >Download</a>
+    </div> -->
+  </div> 
+  
+</form>

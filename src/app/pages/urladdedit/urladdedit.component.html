@@ -1,0 +1,29 @@
+<h2 class="f-w-500 m-b-24" mat-dialog-title><strong>Edit Target URL</strong><app-crossbutton></app-crossbutton></h2>
+<form [formGroup]="urlForm" (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <input formControlName="URLForwarderID" [hidden]="true">
+    <div mat-dialog-content class="content">
+        <mat-form-field  appearance="outline" style="display: none;">
+            <mat-label>Direct link </mat-label>
+            <input matInput type="text" placeholder="i.e /first-app" formControlName="URLPath" [disabled]=true
+                [readonly]="true">
+            <span matTextPrefix>3u.gg/</span>
+        </mat-form-field>
+        <div class="col-sm-12 d-flex align-items-center">
+            <mat-label class="mat-subtitle-2 f-w-600 d-block m-b-16">Direct Link: </mat-label>
+            <span class="m-b-16 m-l-5">&nbsp;&nbsp;3u.gg/{{ urlForm.get('URLPath')?.value }}</span>
+        </div>
+        <mat-form-field appearance="outline" class="m-t-10">
+            <mat-label>Target URL</mat-label>
+            <input matInput formControlName="TargetURL" width="80%">
+            <mat-error *ngIf="controlHasError('required', 'TargetURL')">Please enter a valid URL.</mat-error>
+        </mat-form-field>
+        <div class="float-right">
+            <button mat-flat-button mat-flat-button color="primary" [disabled]="!userForm.valid" type="submit">
+                Save
+            </button>
+            <button mat-stroked-button color="warn" class="m-l-8" [mat-dialog-close]="false">
+                Cancel
+            </button>
+        </div>
+    </div>
+</form>

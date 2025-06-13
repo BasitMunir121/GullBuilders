@@ -1,0 +1,340 @@
+<mat-sidenav-container>
+  <mat-sidenav-content class="">
+    <mat-toolbar class="topbar topbar-xl m-auto">
+      <div class="container full-width p-xs-6 justify-content-between">
+        <div class="branding p-x-0">
+          @if(options.theme === 'light') {
+          <a href="/">
+            <img width="100" src="./assets/images/backgrounds/consPro1.png" class="align-middle m-2" alt="logo" />
+          </a>
+          } @if(options.theme === 'dark') {
+          <a href="/">
+            <img width="100" src="./assets/images/backgrounds/consPro1.png" class="align-middle m-2" alt="logo" />
+          </a>
+          }
+        </div>
+        <!-- <div class="d-none d-lg-flex">
+          <a mat-button class="m-x-8 f-s-16 f-w-500" [routerLink]="['/authentication/side-register']">Register</a>
+          <a mat-button class="m-x-8 f-s-16 f-w-500" [routerLink]="['/authentication/side-login']">Login</a>
+        </div> -->
+      </div>
+    </mat-toolbar>
+    <div class="overflow-hidden banner-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-11">
+            <div class="text-center">
+                <h1 class="banner-title m-0">
+                Welcome to ConstructPro: Empowering Construction, Connecting Opportunities
+                </h1>
+                <p class="f-s-18 p-y-24 m-t-12 m-0 banner-subtitle">
+                Transforming Construction with Innovation, Quality, and Trust
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-wrapper overflow-hidden position-relative m-t-40 p-t-30 p-b-10">
+        <div class="d-flex flex-row w-100">
+          <div class="slider-img">
+        <img src="https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&w=600&q=80" height="400" alt="Construction Workers" />
+          </div>
+          <div class="slider-img">
+        <img src="https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&w=600&q=80" height="400" alt="Building Construction" />
+          </div>
+          <div class="slider-img">
+        <img src="https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg?auto=compress&w=600&q=80" height="400" alt="Crane at Construction Site" />
+          </div>
+          <div class="slider-img">
+        <img src="https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&w=600&q=80" height="400" alt="Construction Equipment" />
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="spacer bg-white" id="demos">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <div class="d-sm-flex align-items-center justify-content-center">
+              <div class="d-flex align-items-center justify-content-center social-chips">
+                <img src="assets/images/profile/user-2.jpg" width="30" alt="social" class="rounded-circle" />
+                <img src="assets/images/profile/user-3.jpg" width="30" alt="social" class="rounded-circle" />
+                <img src="assets/images/profile/user-4.jpg" width="30" alt="social" class="rounded-circle" />
+              </div>
+              <span class="f-s-16 f-w-500 m-l-10"><span class="f-w-600">52,589+</span> builders
+                using our website</span>
+            </div>
+            <h2 class="section-title">
+              Why Choose ConstructPro?
+            </h2>
+          </div>
+        </div>
+        <!----------------------------------------------------------------------------------------------------------------->
+        <div class="row">
+          @for(blogPost of blogPosts; track blogPost.title) {
+          <ng-container>
+            <div class="col-sm-6 col-lg-4">
+              <mat-card class="cardWithShadow card2 position-relative card-hover cursor-pointer">
+                <img mat-card-image src="{{ blogPost.imgSrc }}" height="210" alt="KisanXpert" />
+                <div class="card-overlay h-100 d-flex p-16 p-y-0 align-items-end justify-content-between">
+                  <mat-card-title class="mat-headline-6 m-t-15">{{
+                    blogPost.title
+                    }}</mat-card-title>
+
+                </div>
+
+                <mat-card-content class="p-y-24">
+                  <ul>
+                    <li>{{blogPost.data1}}</li>
+                    <li>{{blogPost.data2}}</li>
+                    <li>{{blogPost.data3}}</li>
+                  </ul>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </ng-container>
+          }
+        </div>
+        <!----------------------------------------------------------------------------------------------------------------->
+      </div>
+    </div>
+
+    <div class="spacer">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-sm-8">
+            <span class="d-block text-center f-w-500 f-s-16">Almost Covered Everything</span>
+            <h2 class="section-title text-center m-t-16">
+              Our Features
+            </h2>
+          </div>
+        </div>
+        <div class="row m-t-24">
+          @for(feature of features; track feature.title) {
+          <div class="col-sm-6 col-lg-4">
+            <mat-card class="cardWithShadow">
+              <mat-card-content>
+                <!-- <span class="icon-50 bg-light-{{
+                    feature.color
+                  }} rounded d-flex align-items-center justify-content-center">
+                  <i-tabler [name]="feature.icon" class="text-{{ feature.color }} icon-30"></i-tabler>
+                </span> -->
+                <h6 class="m-0 f-s-18 f-w-600 m-b-8 m-t-24">
+                  {{ feature.title }}
+                </h6>
+                <span class="f-s-14 m-b-24 d-block lh-base">{{
+                  feature.subtext
+                  }} @if(feature.subtextMore){
+                  <br>
+                  {{feature.subtextMore}}
+                  }</span>
+              </mat-card-content>
+            </mat-card><br>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+       <!-- Custom Request Form Section -->
+<div class="spacer bg-white" id="custom-request">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Custom Project Request</h2>
+        <p class="f-s-16">
+          Describe your construction project needs in detail such as site location, type of construction residential, commercial, renovation, etc.
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form [formGroup]="customRequestForm" (ngSubmit)="submitCustomRequest()" enctype="multipart/form-data" class="p-16 cardWithShadow">
+          <mat-form-field appearance="outline" class="w-100 m-b-16">
+            <mat-label>Your Name</mat-label>
+            <input matInput formControlName="name" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 m-b-16">
+            <mat-label>Contact (WhatsApp or Email)</mat-label>
+            <input matInput formControlName="contact" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 m-b-16">
+            <mat-label>Site Location</mat-label>
+            <input matInput formControlName="siteLocation" placeholder="City, Area, or Address">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 m-b-16">
+            <mat-label>Type of Construction</mat-label>
+            <mat-select formControlName="constructionType">
+              <mat-option value="Residential">Residential</mat-option>
+              <mat-option value="Commercial">Commercial</mat-option>
+              <mat-option value="Renovation">Renovation</mat-option>
+              <mat-option value="Industrial">Industrial</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 m-b-16">
+            <mat-label>Estimated Area (sq ft)</mat-label>
+            <input matInput formControlName="area" type="number" min="0" placeholder="e.g. 2000">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-100 m-b-16">
+            <mat-label>Project Description & Requirements</mat-label>
+            <textarea matInput formControlName="description" rows="4" required placeholder="Describe your project, timeline, material preferences, etc."></textarea>
+          </mat-form-field>
+          <div class="text-right">
+            <button mat-flat-button color="primary" [disabled]="!customRequestForm.valid" type="submit">
+              Submit Request
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="bg-light">
+      <div class="container">
+        <div class="bg-dark rounded p-32 position-relative">
+          <div class="row justify-content-between">
+            <div class="col-lg-6">
+                <h3 class="m-t-0 section-title2 text-white m-b-8">
+                Ready to Build Your Dream Project?
+                </h3>
+                <span class="f-s-16 m-b-40 m-t-8 d-block text-white">
+                Partner with trusted professionals, access quality materials, and bring your construction vision to life.
+                </span>
+              <div class="hstack">
+                <a mat-flat-button (click)="openQuoteForm()" color="primary" class="btn-custom sm">Request a Quote</a>
+              </div>
+            </div>
+            <div class="col-lg-5 text-right">
+              <img src="assets/images/landingpage/background/req.png" alt="img" width="596"
+                class="c2a-img d-none d-lg-flex" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div
+      style="position: fixed; right: 24px; bottom: 100px; z-index: 9999; display: flex; flex-direction: column; gap: 16px;">
+      <a href="https://wa.me/+923355862952" target="_blank"
+        class="floating-btn whatsapp-btn"
+        aria-label="Chat on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+          style="width:32px; height:32px;">
+      </a>
+      <a href="tel:+923355862952"
+        class="floating-btn phone-btn"
+        aria-label="Call Now">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone"
+          style="width:55px; height:55px;">
+      </a>
+    </div>
+    <style>
+    .floating-btn {
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-size: 28px;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(40px) scale(0.7);
+      animation: btnFadeIn 0.7s forwards;
+    }
+    .phone-btn {
+      background: #34b7f1;
+      animation-delay: 0.2s;
+    }
+    .whatsapp-btn {
+      animation-delay: 0.05s;
+    }
+    @keyframes btnFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .floating-btn:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transform: scale(1.08);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    </style>
+
+    <ng-template #quoteForm>
+      <h2 mat-dialog-title>Request a Quote</h2>
+      <form [formGroup]="quoteFormGroup" class="p-16">
+        <mat-form-field appearance="outline" class="w-100 m-b-16">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 m-b-16">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 m-b-16">
+          <mat-label>Service</mat-label>
+          <mat-select formControlName="service" required>
+            <mat-option *ngFor="let service of constructionServices"
+              [value]="service.name">{{service.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 m-b-16">
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location" [value]="selectedLocation">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 m-b-16">
+          <mat-label>Details</mat-label>
+          <textarea matInput formControlName="details" rows="3"></textarea>
+        </mat-form-field>
+        <div class="text-right">
+          <button mat-flat-button color="primary" (click)="submitQuote()"
+            [disabled]="!quoteFormGroup.valid">Submit</button>
+        </div>
+      </form>
+    </ng-template>
+
+
+<!-- QR Code & Advertising Strategy Section -->
+<div class="spacer bg-white" id="qr-advertising">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">QR Code & Advertising Strategy</h2>
+        <p class="f-s-16">
+          Scan the QR code to quickly access our WhatsApp or share your project with us. 
+          <br>
+          <img [src]="qrCodeUrl" alt="WhatsApp QR Code" style="width:140px; margin: 16px auto;">
+        </p>
+        <h4 class="m-t-24">Advertising Strategy</h4>
+        <p class="f-s-15">
+          We leverage digital marketing, social media, and QR code campaigns to reach more customers. 
+          Share your QR code at events, on business cards, or in print ads to drive direct engagement!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+    <footer class="p-y-30 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 text-center">
+            <div class="f-s-16 m-t-8">
+              All rights reserved by ConstructPro.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
