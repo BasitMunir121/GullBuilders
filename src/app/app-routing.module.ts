@@ -17,7 +17,7 @@ const routes: Routes = [
       import('./pages/pages.module').then((m) => m.PagesModule),
   },
   {
-    path: 'KisanXpert',
+    path: 'GullBuilders',
     canActivate: [AuthGuard],
     component: FullComponent,
 
