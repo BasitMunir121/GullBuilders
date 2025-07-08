@@ -8,7 +8,7 @@ import { User } from './models/UserModel';
 // import { AuthGuard, UserGuard } from './common/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/landingpage', pathMatch: 'full' },
+  // { path: '', redirectTo: '/landingpage', pathMatch: 'full' },
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
@@ -31,7 +31,7 @@ const routes: Routes = [
       import('./pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
   },
   {
-    path: 'landingpage',
+    path: '',
     loadChildren: () =>
       import('./pages/landingpage/landingpage.module').then(
         (m) => m.LandingPageModule
